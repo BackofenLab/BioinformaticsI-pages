@@ -22,7 +22,7 @@ For the given examples which ones can be called alignments:
 ```
 AGTTTTTT
 AGGTTTTT
-``` 
+```
 
 
 #### {.tabset}
@@ -39,7 +39,7 @@ AGGTTTTT
 True
 
 
-::: 
+:::
 
 #### {-}
 
@@ -49,7 +49,7 @@ True
 ```
 CCGTTTTTT
 -AGGTTTTT
-``` 
+```
 
 
 #### {.tabset}
@@ -66,16 +66,16 @@ CCGTTTTTT
 True
 
 
-::: 
+:::
 
-#### 
+####
 
 ### 1c)
 
 ```
 CCCGTTTTTTGC
 -CGGTTTTT
-``` 
+```
 
 
 
@@ -92,7 +92,7 @@ CCCGTTTTTTGC
 False. In an alignment both strings must have the same length
 
 
-::: 
+:::
 
 #### {-}
 
@@ -101,7 +101,7 @@ False. In an alignment both strings must have the same length
 ```
 AG--TTTTTT
 AG-GTTTTTT
-``` 
+```
 
 
 #### {.tabset}
@@ -118,7 +118,7 @@ AG-GTTTTTT
 False. Gaps cannot be aligned with gaps
 
 
-::: 
+:::
 
 #### {-}
 
@@ -143,8 +143,8 @@ w(x,y)=
 \begin{cases}
   + 1 & if\ x = `-`\ \vee\ y=`-`\\
   - 1 & if\ x = y \\
-  0 & else\\ 
-\end{cases} 
+  0 & else\\
+\end{cases}
 $$
 :::
 
@@ -154,7 +154,7 @@ zm <- data.frame(a = c("-", "T",  "A",   "C",   "G", "C", "G", "C"),
                  b = c(" ", " ", " ",  " ",  " ", " ", " ", " "),
                  c = c(" ", " ", " ",  " ",  " ", " ", " ", " "),
                  d = c(" ", " ", " ",  " ",  " ", " ", " ", " "),
-                 e = c(" ", " ", " ",  " ",  " ", " ", " ", " "),                 
+                 e = c(" ", " ", " ",  " ",  " ", " ", " ", " "),
                  f = c(" ", " ", " ",  " ",  " ", " ", " ", " "),
                  g = c(" ", " ", " ",  " ",  " ", " ", " ", " "))
 names(zm) <- c("D_{i,j}", "-", "T1", "C1", "C2", "G1", "A1")
@@ -183,7 +183,7 @@ Complete the provided table with the correct initialization step.
 \begin{align}
   D_{0,0} &= 0\\
   \forall i \leq |S1|:  D_{i,0} &= \sum_{k=1}^{i} w(S1_i, -) \\
-  \forall j \leq |S2|: D_{0,j} &= \sum_{k=1}^{j} w(-, S2_j) 
+  \forall j \leq |S2|: D_{0,j} &= \sum_{k=1}^{j} w(-, S2_j)
 \end{align}
 
 
@@ -226,7 +226,7 @@ $$
   D_{i-1,j-1} + w(S1_i, S2_j)\\
   D_{i,j-1} + w(-, S2_j) \\
   D_{i-1,j} + w(S1_i, -)
-\end{cases} 
+\end{cases}
 $$
 
 
@@ -268,7 +268,7 @@ Using the matrix from 1B) find the optimal alignment of the given sequences.
 TACGCGC
 | | ||:
 T-C-CGA
-``` 
+```
 
 #### {-}
 
@@ -293,7 +293,7 @@ You can split the alignment at the G and treat it as two separate alignments
 TACGCGC   TACGCGC   TACGCGC
 |:|||     |:|| :    |:||  :
 TCCGA--   TCCG-A-   TCCG--A
-``` 
+```
 
 #### {-}
 
@@ -313,9 +313,9 @@ and which are False.
  - [ ] Needleman-Wunsch computes global alignment in O(n²) time.
  - [ ] The Hirschberg recursion is a space optimized version of the Needleman-Wunsch algorithm.
  - [ ] Hirschberg computes global alignment in O(n) time.
- 
+
 ##### Solution
- 
+
  - [ ] Hirschberg computes global alignment in O(n²) space.
  - [x] Needleman-Wunsch computes global alignment in O(n²) time.
  - [x] The Hirschberg recursion is a space optimized version of the Needleman-Wunsch algorithm.
@@ -340,7 +340,7 @@ Access the Github Classroom link: [Programming Assignment: Sheet 03](https://cla
 
 Below you find an interactive tool that allows you to create dynamic programming matrices to practice for the exam.
 You can fill in the table and check which values are correct via the Check Matrix button. Correctly filled cells will turn green.
-For nor this tool only supports the maximization approach. 
+For nor this tool only supports the maximization approach.
 
 :::: {#explaining .warning-box }
 
