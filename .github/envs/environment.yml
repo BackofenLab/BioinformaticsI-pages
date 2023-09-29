@@ -1,0 +1,9 @@
+name: rmarkdown-env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - r-rmarkdown
+  - pandoc
+  - r-flextable
+  - r-officer
