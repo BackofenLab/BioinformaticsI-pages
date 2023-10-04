@@ -340,7 +340,8 @@ Access the Github Classroom link: [Programming Assignment: Sheet 03](https://cla
 
 Below you find an interactive tool that allows you to create dynamic programming matrices to practice for the exam.
 You can fill in the table and check which values are correct via the Check Matrix button. Correctly filled cells will turn green.
-For nor this tool only supports the maximization approach.
+
+For now this tool only supports the maximization approach. 
 
 :::: {#explaining .warning-box }
 
@@ -365,7 +366,7 @@ htmltools::includeHTML("html/needlemanwunsch.html")
 ```
 
 ```{r, echo=FALSE}
-htmltools::tags$script(src = "js/needlemanwunsch.js", type= "text/javascript")
+htmltools::tags$script(src = "assets/js/needlemanwunsch.js", type= "text/javascript")
 ```
 
 

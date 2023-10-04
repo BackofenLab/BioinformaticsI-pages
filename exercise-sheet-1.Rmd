@@ -7,7 +7,7 @@ title: "Exercise sheet 1: Biology Basics"
 # Exercise 1 - General
 
 Here are some general biology questions. Using the Possible Solutions tab will
-convert each question to multiple choice. In the solution only correct answers are ticked.
+convert each question to multiple choice. In the solution only Solutions are ticked.
 
 ### 1a)
 
@@ -36,7 +36,7 @@ Where is the genome stored in prokaryotes and eukaryotes?
 
 
 
-##### Correct Answer
+##### Solution
 
 ::: {.answer data-latex=""}
 
@@ -81,7 +81,7 @@ Name more differences between prokaryotes and eukaryotes?
 
 
 
-##### Correct Answer
+##### Solution
 
 ::: {.answer data-latex=""}
 
@@ -127,7 +127,7 @@ List examples of  prokaryotes and eukaryotes.
 
 
 
-##### Correct Answer
+##### Solution
 
 ::: {.answer data-latex=""}
 
@@ -171,7 +171,7 @@ What are the three information-carrying biopolymers?
 
 
 
-##### Correct Answer
+##### Solution
 
 ::: {.answer data-latex=""}
 
@@ -212,7 +212,7 @@ What is denoted by the “Central Dogma” of molecular biology?
 
 
 
-##### Correct Answer
+##### Solution
 
 ::: {.answer data-latex=""}
 
@@ -279,7 +279,7 @@ knitr::include_graphics("figures/sheet-1/sheet1-q2.png")
 10. backbone
 
 
-##### Correct Answer
+##### Solution
 
 
 
@@ -327,7 +327,7 @@ What is the combined percentage of adenine and thymine?
 :::
 
 
-##### Correct Answer
+##### Solution
 
 - guanine: 33%
 - cytosine: 33%
@@ -360,7 +360,7 @@ Decide which bases are pyrimidines and which are purines:
 
 
 
-##### Correct Answer
+##### Solution
 
 - pyrimidines: 
   + **C**
@@ -398,7 +398,7 @@ Which of these statements concerning DNA and RNA are correct?
 - [ ] RNA contains ribose sugar
 
 
-##### Correct Answer
+##### Solution
 
 - [x] Uracil is a standard base in RNA
 - [x] DNA is longer than RNA
@@ -431,7 +431,7 @@ In what direction is an RNA sequence written?
 - [ ] 5' end to 3' end
 
 
-##### Correct Answer
+##### Solution
 
 - [ ] 3' end to 5' end
 - [x] 5' end to 3' end
@@ -463,7 +463,7 @@ Why is the RNA sequence written in that direction?
 - [ ] The order was arbitrarily chosen by the discoverer of RNA
 
 
-##### Correct Answer
+##### Solution
 
 - [x] The order is based on the numbering of the carbons in the sugar of the nucleic acid
 - [ ] The order is based on the numbering of the carbons in the phosphate of the nucleic acid
@@ -512,7 +512,7 @@ Decide for the following RNAs whether they are coding or non-coding: mRNA, tRNA,
 
 There is only one coding RNA
 
-##### Correct Answer
+##### Solution
 
 - coding: mRNA
 - non-coding: tRNA, rRNA, microRNA, siRNA, snoRNA
@@ -555,7 +555,7 @@ What do these acronyms stand for within this course?
 - [ ] coding-sequence
 - [ ] open reading frame
 
-##### Correct Answer
+##### Solution
 
 - [x] DNA - Deoxyribonucleic acid
 - [x] RNA - Deoxyribonucleic acid
@@ -629,7 +629,7 @@ single-cell-organism
 - [ ] Prokaryotes
 
 
-##### Correct Answer
+##### Solution
 
 DNA
 
@@ -684,7 +684,7 @@ Check whether the  following statements are True or False.
 - `r knitr::asis_output("\U2716")` A Watson-Crick base pair describes a purine pairing with a purine
 - [ ] RNA is a single stranded bio-polymer
 
-##### Correct Answer
+##### Solution
 
 - [ ] The genome is stored in the nucleus
 - [x] FASTA files are used to store sequence information
@@ -705,4 +705,3 @@ We recommend doing these assignments since they will help you to further underst
 Access the Github Classroom link: [Programming Assignment: Sheet 01](https://classroom.github.com/a/9cmcZ0xd).
 
 -------------------------------------------
-

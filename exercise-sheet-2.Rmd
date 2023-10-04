@@ -31,7 +31,7 @@ A `r knitr::asis_output("\U2192")` T
 
 
 
-##### Correct Answer
+##### Solution
 
 A `r knitr::asis_output("\U2192")` T = 1
 
@@ -59,7 +59,7 @@ S_{2} &= TATATATA
 AGATATA `r knitr::asis_output("\U2192")` ATATATA `r knitr::asis_output("\U2192")` ...
 
 
-##### Correct Answer
+##### Solution
 
 AGATATA `r knitr::asis_output("\U2192")` ATATATA `r knitr::asis_output("\U2192")` TATATATA = 2
 
@@ -90,7 +90,7 @@ AGTCCT `r knitr::asis_output("\U2192")` AGCTCA `r knitr::asis_output("\U2192")` 
 
 
 
-##### Correct Answer
+##### Solution
 
 AGTCCT `r knitr::asis_output("\U2192")` CGTCCT `r knitr::asis_output("\U2192")` CGCCCT `r knitr::asis_output("\U2192")` CGCTCT `r knitr::asis_output("\U2192")` CGCTCA = 4
 
@@ -122,7 +122,7 @@ TGCATAT `r knitr::asis_output("\U2192")` AGCATAT `r knitr::asis_output("\U2192")
 
 
 
-##### Correct Answer
+##### Solution
 
 TGCATAT `r knitr::asis_output("\U2192")` AGCATAT `r knitr::asis_output("\U2192")` ATCATAT `r knitr::asis_output("\U2192")` ATCAGAT `r knitr::asis_output("\U2192")` ATCCGAT = 4
 
@@ -154,7 +154,7 @@ You need to use all the possible operations
 
 ACGTATATAGCCCCGCG `r knitr::asis_output("\U2192")` ACGTTATATAGCCCCGCG `r knitr::asis_output("\U2192")` ...
 
-##### Correct Answer
+##### Solution
 
 ACGTATATAGCCCCGCG `r knitr::asis_output("\U2192")` ACGTTATATAGCCCCGCG `r knitr::asis_output("\U2192")` ACGTTATATAGCCGCGCG `r knitr::asis_output("\U2192")` ACGTTATATAGCCGCGC = 3
 
@@ -213,7 +213,7 @@ w(x,y) = x-y
 What if $x = 1$ and $y = 2$?
 
 
-##### Correct Answer
+##### Solution
 
 Not a metric, violates symmetry constraint.
 
@@ -246,7 +246,7 @@ w(x,y) = |x-y|
 You need to check all the properties.
 
 
-##### Correct Answer
+##### Solution
 
 Metric
 
@@ -269,7 +269,7 @@ w(x,y) = x+y
 
 What if $x = 1$ and $y = 1$?
 
-##### Correct Answer
+##### Solution
 
 Not metric, violates identity constraint:
 
@@ -300,7 +300,7 @@ w(x,y) = \begin{cases} 1 \ \text{if}\ x  \neq y
 
 You need to check all the properties.
 
-##### Correct Answer
+##### Solution
 
 Metric
 
