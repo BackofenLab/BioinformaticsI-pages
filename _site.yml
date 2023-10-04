@@ -15,9 +15,6 @@ output:
     includes:
        in_header: header.html
        after_body: "assets/html/removeSolution.html"
-  pdf_document:
-    includes:
-      in_header: "_tex/latex_commands.tex"
 urlcolor: blue
 linkcolor: blue
 
