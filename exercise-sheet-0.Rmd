@@ -1,0 +1,58 @@
+---
+title: "Exercise sheet 0: Math"
+---
+
+---------------------------------
+
+# Exercise 1 - Recursions
+
+
+### 1a)
+
+Given the recursive Formulation, fill in the array underneath:
+
+$$
+a_n = a_{n-1} + d\ \forall \ 2\leq n < x
+$$
+
+```{r, echo=FALSE}
+htmltools::includeHTML("html/linearRecursion.html")
+```
+
+
+
+
+### 1b)
+
+Given the recursive formulation, fill in the missing cell underneath:
+
+
+:::: {#explaining .message-box }
+
+::: {#note-exp .note-header}
+```{r, include=knitr::is_html_output(), echo=FALSE,}
+knitr::include_graphics("figures/infoicon.svg")
+```
+**Note**
+:::
+::: {#note-exp .note-body}
+
+
+During the course of Bioinformatics we will use $i$ as the row and $j$ as the
+column index
+
+:::
+
+::::
+
+
+$$
+D_{i, j} = max (D_{i-1. j-1} + 2, D_{i-1, j} + 3, D_{i, j-1} + 1)\ \forall i\ge j > 1
+$$
+```{r, echo=FALSE}
+htmltools::includeHTML("html/matrixMax.html")
+```
+
+```{r, echo=FALSE}
+htmltools::tags$script(src = "assets/js/recursions.js", type= "text/javascript")
+```
