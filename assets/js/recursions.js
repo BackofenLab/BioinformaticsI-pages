@@ -151,7 +151,7 @@ function checkMaxMatrix(){
   console.log(maxTable.rows[1].cells[2].children[0].value)
   first = parseInt(maxTable.rows[1].cells[1].children[0].value) + 2;
   second = parseInt(maxTable.rows[1].cells[2].children[0].value) + 3;
-  third = parseInt(maxTable.rows[1].cells[2].children[0].value) + 1;
+  third = parseInt(maxTable.rows[2].cells[1].children[0].value) + 1;
   result = Math.max(first, second, third);
   cellElement = maxTable.rows[2].cells[2];
   current = parseInt(cellElement.children[0].value);
