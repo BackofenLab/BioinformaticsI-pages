@@ -47,7 +47,7 @@ column index
 
 
 $$
-D_{i, j} = max (D_{i-1. j-1} + 2, D_{i-1, j} + 3, D_{i, j-1} + 1)\ \forall i, j : i  \ge  j > 1
+D_{i, j} = max (D_{i-1. j-1} + 2, D_{i-1, j} + 3, D_{i, j-1} + 1)\ , \quad \forall i, j : i  \ge  j > 1
 $$
 ```{r, echo=FALSE}
 htmltools::includeHTML("html/matrixMax.html")
