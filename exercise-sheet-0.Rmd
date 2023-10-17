@@ -12,7 +12,10 @@ title: "Exercise sheet 0: Math"
 Given the recursive Formulation, fill in the array underneath:
 
 $$
-a_n = a_{n-1} + d\ \forall \ 2\leq n < x
+\begin{align*}
+a_{n+1} &= a_{n} + d, \quad \forall n : 2 \leqslant n < x, \\
+a_{n+1} &= 0, \quad \text{else}
+\end{align*}
 $$
 
 ```{r, echo=FALSE}
@@ -47,7 +50,7 @@ column index
 
 
 $$
-D_{i, j} = max (D_{i-1. j-1} + 2, D_{i-1, j} + 3, D_{i, j-1} + 1)\ \forall i\ge j > 1
+D_{i, j} = max (D_{i-1. j-1} + 2, D_{i-1, j} + 3, D_{i, j-1} + 1)\ \forall i, j : i  \ge  j > 1
 $$
 ```{r, echo=FALSE}
 htmltools::includeHTML("html/matrixMax.html")
