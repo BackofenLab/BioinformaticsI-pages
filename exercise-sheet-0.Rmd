@@ -12,7 +12,7 @@ title: "Exercise sheet 0: Math"
 Given the recursive Formulation, fill in the array underneath:
 
 $$
-a_{n+1} &= a_{n} + d, \quad \forall n : 2 \leqslant n < x,
+a_{n+1} &= a_{n} + d, \quad \forall n : 2 \leqslant n < x
 $$
 
 ```{r, echo=FALSE}
