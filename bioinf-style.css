@@ -24,7 +24,7 @@ a:hover {
 
 @font-face {
   font-family: 'Creepster';
-  src: url('fonts/Creepster.ttf') format('truetype');
+  src: url('assets/fonts/Creepster.ttf') format('truetype');
 }
 
 table td:first-child { border-right:  1px solid; }
