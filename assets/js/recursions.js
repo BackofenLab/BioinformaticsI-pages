@@ -53,8 +53,8 @@ function linearRecursion(a0, d, x) {
 
   const sequence = [a0];
 
-  for (let n = 2; n < x; n++) {
-    const an = sequence[n - 2] + d;
+  for (let n = 1; n < x; n++) {
+    const an = sequence[n - 1] + d;
     sequence.push(an);
   }
 
@@ -63,35 +63,34 @@ function linearRecursion(a0, d, x) {
 
 
 
-function checkLinearRecursion(){
-  a0 = document.getElementById("linRecA0").value;
-  x = document.getElementById("linRecX").value;
-  d = document.getElementById("linRecD").value;
+function checkLinearRecursion() {
+  const a0 = parseFloat(document.getElementById("linRecA0").value);
+  const x = parseInt(document.getElementById("linRecX").value);
+  const d = parseFloat(document.getElementById("linRecD").value);
   const lrtable = document.getElementById('lin-rec-table');
-  array = accessArray("linRecTable");
-  expected = linearRecursion(a0, d, x);
-  console.log("expected ",expected)
-  for (var i = 0; i < array.length; i++) {
+  const expected = linearRecursion(a0, d, x);
+
+  console.log("expected ", expected);
+
+  for (let i = 0; i < lrtable.rows[1].cells.length; i++) {
     const cellElement = lrtable.rows[1].cells[i];
-    let current = cellElement.childNodes[0].value
-    var ei = expected[i]
-    if (i >= x){
-      if (current == "" || current == null) {
-          cellElement.style.backgroundColor = "var(--right-answer)"
-      }
-      else {
-          cellElement.style.backgroundColor = "var(--wrong-answer)"
+    const current = parseFloat(cellElement.childNodes[0].value);
+    const ei = expected[i];
+
+    if (i >= x) {
+      if (current === "" || current === null) {
+        cellElement.style.backgroundColor = "var(--right-answer)";
+      } else {
+        cellElement.style.backgroundColor = "var(--wrong-answer)";
       }
     } else {
-      if (current == "" || current == null) {
-          cellElement.style.backgroundColor = "var(--wrong-answer)"
-      }
-      else if (current == array[i]) {
-          cellElement.style.backgroundColor = "var(--right-answer)"
+      if (current === "" || current === null) {
+        cellElement.style.backgroundColor = "var(--wrong-answer)";
+      } else if (current === ei) {
+        cellElement.style.backgroundColor = "var(--right-answer)";
       } else {
-          cellElement.style.backgroundColor = "var(--wrong-answer)"
+        cellElement.style.backgroundColor = "var(--wrong-answer)";
       }
-
     }
   }
 }
