@@ -74,7 +74,7 @@ function checkLinearRecursion() {
 
   for (let i = 0; i < lrtable.rows[1].cells.length; i++) {
     const cellElement = lrtable.rows[1].cells[i];
-    const current = parseFloat(cellElement.childNodes[0].value);
+    const current = cellElement.childNodes[0].value;
     const ei = expected[i];
 
     if (i >= x) {
@@ -86,7 +86,7 @@ function checkLinearRecursion() {
     } else {
       if (current === "" || current === null) {
         cellElement.style.backgroundColor = "var(--wrong-answer)";
-      } else if (current === ei) {
+      } else if (parseFloat(current) === ei) {
         cellElement.style.backgroundColor = "var(--right-answer)";
       } else {
         cellElement.style.backgroundColor = "var(--wrong-answer)";
