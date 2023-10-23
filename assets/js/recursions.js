@@ -52,7 +52,7 @@ function linearRecursion(a0, d, x) {
   }
 
   const sequence = [a0];
-
+  console.log(x)
   for (let n = 1; n < x; n++) {
     const an = sequence[n - 1] + d;
     sequence.push(an);
@@ -65,7 +65,7 @@ function linearRecursion(a0, d, x) {
 
 function checkLinearRecursion() {
   const a0 = parseFloat(document.getElementById("linRecA0").value);
-  const x = parseInt(document.getElementById("linRecX").value);
+  const x = parseFloat(document.getElementById("linRecX").value);
   const d = parseFloat(document.getElementById("linRecD").value);
   const lrtable = document.getElementById('lin-rec-table');
   const expected = linearRecursion(a0, d, x);
