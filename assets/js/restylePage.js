@@ -10,13 +10,22 @@ function displayRandomImage(svgImage, left, top, scale, rotation, zindex=-99, im
     // List of SVG image file names in the "img" folder
     // Choose a random SVG image from the list
     // Create an image element and set its attributes
-    var image = document.createElement("object");
-    image.id = image_id
-    image.data = imgFolder + svgImage; // Replace with your SVG file path
-    image.type = "image/svg+xml";
-    image.style.width = "100px"
-    image.style.transform = `rotate(${rotation}deg)`;
-    image.style.transform += ` scale(${scale})`;
+    if (image_id) {
+      var image = document.createElement("object");
+      image.id = image_id
+      image.data = imgFolder + svgImage; // Replace with your SVG file path
+      image.type = "image/svg+xml";
+
+    } else {
+      var image = new Image();
+      image.src = imgFolder + svgImage;
+      image.style.width = "100px"
+      image.style.transform = `rotate(${rotation}deg)`;
+      image.style.transform += ` scale(${scale})`;
+    }
+
+
+
     image.className = "random-image";
     image.style.position = "fixed";
     image.style.zIndex = zindex;
@@ -24,9 +33,10 @@ function displayRandomImage(svgImage, left, top, scale, rotation, zindex=-99, im
     image.style.top = top + "%"; // Adjust as needed
 
     // Add a click event listener to make the image disappear
-    //image.addEventListener("click", function() {
-    //    document.body.removeChild(image);
-    //});
+    image.addEventListener("click", function() {
+       image.style.display = "none"; // Hide the object when clicked
+       document.body.removeChild(image);
+    });
 
     // Append the image to the body
     document.body.appendChild(image);
@@ -83,7 +93,14 @@ function christmasTheme(){
   document.body.style.backgroundSize = "cover"
   document.body.style.backgroundAttachment = "fixed"
   document.body.style.backgroundPosition = "center bottom"
-  displayRandomImage("reindeer.svg", 90, 85, 3, -8, zindex=1, image_id="reindeer-svg");
+  var w = window.innerWidth;
+  console.log(w);
+  if (w < 450) {
+    var pos = 60;
+  } else {
+    var pos = 80;
+  }
+  displayRandomImage("reindeer.svg", pos, 75, 1, 0, zindex=1, image_id="reindeer-svg");
   document.documentElement.style.setProperty('--font-family', 'Festive,"Source Sans Pro",Calibri,Candara,Arial,sans-serif');
   var svgObject = document.getElementById("reindeer-svg");
   var scrollTimeout;
