@@ -5,6 +5,7 @@
   --active-item-color: #00a082;
   --selector-color: #ebf5fb;
   --font-family: "Source Sans Pro",Calibri,Candara,Arial,sans-serif;
+  --exercise-bg-color: white;
 }
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: var(--font-family);
@@ -16,7 +17,8 @@ a:hover {
   color: var(--active-item-color);
 }
 .toc-content {
-  background-color: white;
+  background-color: var(--exercise-bg-color);
+  border-radius: 10px;
 }
 .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
   background-color: var(--active-item-color);
@@ -25,6 +27,11 @@ a:hover {
 @font-face {
   font-family: 'Creepster';
   src: url('assets/fonts/Creepster.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Festive';
+  src: url('assets/fonts/Festive.ttf') format('truetype');
 }
 
 table td:first-child { border-right:  1px solid; }
