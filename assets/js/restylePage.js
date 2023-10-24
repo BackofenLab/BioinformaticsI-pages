@@ -59,7 +59,13 @@ function halloweenTheme(){
   displayRandomImage("bat.svg", 2, 30, 2, -30);
   displayRandomImage("bat.svg", 25, 60, 1, 10);
   displayRandomImage("witch.svg", 85, 20, 2, 8);
-  displayRandomImage("pumpkin.svg", 90, 85, 3, 8, zindex=1);
+  var w = window.innerWidth;
+  if (w < 450) {
+    var pos = 60;
+  } else {
+    var pos = 80;
+  }
+  displayRandomImage("pumpkin.svg", pos, 75, 3, 8, zindex=1, image_id="pumpkin-svg");
   document.documentElement.style.setProperty('--ufr-main-blue', "#171512");
   document.documentElement.style.setProperty('--active-item-color', "rgb(219, 134, 7)");
   document.documentElement.style.setProperty('--selector-color', "rgba(219, 134, 7, 0.3)");
@@ -68,6 +74,36 @@ function halloweenTheme(){
   document.body.style.backgroundSize = "cover"
   document.body.style.backgroundAttachment = "fixed"
   document.body.style.backgroundPosition = "center bottom"
+    var svgObject = document.getElementById("pumpkin-svg");
+  var scrollTimeout;
+  svgObject.onload = function() {
+    var svgDocument = svgObject.contentDocument;
+    // Access and manipulate elements in the SVG
+    if (svgDocument) {
+        var svgElement = svgDocument.querySelector("svg");
+        svgElement.onclick = function() {
+        // Remove the SVG element from the DOM
+        svgElement.parentNode.removeChild(svgElement);
+        };
+
+        const eye1 = svgElement.getElementById('eye1');
+        const eye2 = svgElement.getElementById('eye2');
+        eye1.style.fill = "black"
+        eye2.style.fill = "black"
+
+        document.addEventListener('scroll', function() {
+            eye1.style.fill = "#ffee0a";
+            eye2.style.fill = "#ffee0a";
+
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(function() {
+            eye1.style.fill = 'black';
+            eye2.style.fill = "black";
+            }, 200);
+        });
+            // You can now access and manipulate elements in the SV
+    }
+};
 
 
 }
@@ -94,7 +130,6 @@ function christmasTheme(){
   document.body.style.backgroundAttachment = "fixed"
   document.body.style.backgroundPosition = "center bottom"
   var w = window.innerWidth;
-  console.log(w);
   if (w < 450) {
     var pos = 60;
   } else {
