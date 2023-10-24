@@ -109,6 +109,11 @@ function christmasTheme(){
     // Access and manipulate elements in the SVG
     if (svgDocument) {
         var svgElement = svgDocument.querySelector("svg");
+        svgElement.onclick = function() {
+        // Remove the SVG element from the DOM
+        svgElement.parentNode.removeChild(svgElement);
+        };
+
         const rect = svgElement.getElementById('reindeerNose');
         document.addEventListener('scroll', function() {
             rect.style.fill = "#e30613";
@@ -116,8 +121,8 @@ function christmasTheme(){
             rect.style.strokeWidth = 1;
             clearTimeout(scrollTimeout);
             scrollTimeout = setTimeout(function() {
-              rect.style.fill = '#4e3824';
-              rect.style.stroke = "none"
+            rect.style.fill = '#4e3824';
+            rect.style.stroke = "none"
 
 
             }, 200);
