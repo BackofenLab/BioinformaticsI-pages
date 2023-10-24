@@ -65,7 +65,7 @@ function halloweenTheme(){
   } else {
     var pos = 80;
   }
-  displayRandomImage("pumpkin.svg", pos, 75, 3, 8, zindex=1, image_id="pumpkin-svg");
+  displayRandomImage("pumpkin.svg", pos, 70, 3, 8, zindex=1, image_id="pumpkin-svg");
   document.documentElement.style.setProperty('--ufr-main-blue', "#171512");
   document.documentElement.style.setProperty('--active-item-color', "rgb(219, 134, 7)");
   document.documentElement.style.setProperty('--selector-color', "rgba(219, 134, 7, 0.3)");
