@@ -38,7 +38,7 @@ function determineTheme(){
   if (currentMonth == 9){
     halloweenTheme()
   }
-  if (currentMont == 11){
+  if (currentMonth == 11){
     christmasTheme()
   }
 
