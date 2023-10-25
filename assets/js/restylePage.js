@@ -86,19 +86,27 @@ function halloweenTheme(){
         svgElement.parentNode.removeChild(svgElement);
         };
 
-        const eye1 = svgElement.getElementById('eye1');
-        const eye2 = svgElement.getElementById('eye2');
+        const eye1 = svgElement.getElementById('tofill1');
+        const eye2 = svgElement.getElementById('tofill2');
+        const eye3 = svgElement.getElementById('tofill3');
+        const eye4 = svgElement.getElementById('tofill4');
+
         eye1.style.fill = "black"
         eye2.style.fill = "black"
+        eye3.style.fill = "black"
+        eye4.style.fill = "black"
 
         document.addEventListener('scroll', function() {
             eye1.style.fill = "#ffee0a";
             eye2.style.fill = "#ffee0a";
-
+            eye3.style.fill = "#ffee0a";
+            eye4.style.fill = "#ffee0a";
             clearTimeout(scrollTimeout);
             scrollTimeout = setTimeout(function() {
             eye1.style.fill = 'black';
             eye2.style.fill = "black";
+            eye3.style.fill = "black";
+            eye4.style.fill = "black";
             }, 200);
         });
             // You can now access and manipulate elements in the SV
