@@ -112,8 +112,8 @@ function halloweenTheme(){
 
 function christmasTheme(){
 
-  document.documentElement.style.setProperty('--ufr-main-blue', "#007550");
-  document.documentElement.style.setProperty('--active-item-color', "#e30613ff");
+  //document.documentElement.style.setProperty('--ufr-main-blue', "#007550");
+  //document.documentElement.style.setProperty('--active-item-color', "#007550");
   document.documentElement.style.setProperty('--exercise-bg-color', "white");
 
   document.body.style.backgroundColor = "#0F8A5F";
