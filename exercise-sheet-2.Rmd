@@ -317,7 +317,7 @@ Programming assignments are available via Github Classroom and contain automatic
 
 We recommend doing these assignments since they will help you to further understand this topic.
 
-Access the Github Classroom link: [Programming Assignment: Sheet 02](https://classroom.github.com/a/F-sdH7RI).
+Access the Github Classroom link: [Programming Assignment: Sheet 02](https://classroom.github.com/a/e0m0I2OZ).
 
 -------------------------------------------
 
