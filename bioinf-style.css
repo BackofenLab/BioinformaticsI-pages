@@ -272,7 +272,7 @@ pre {
 }
 
 
-.nwtablediv input[type="number"] {
+.nwtablediv input{
      width: 100%;
      box-sizing: border-box;
      -webkit-box-sizing:border-box;

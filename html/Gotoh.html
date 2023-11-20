@@ -1,0 +1,50 @@
+<div class="selectordiv">
+
+
+    <div class="nwselector">
+      <label for="seqA">Seq A:</label>
+      <input type="text" id="seqA" name="fname" value="TCCGA"><br>
+    </div>
+    <div class="nwselector">
+      <label for="seqB">Seq B:</label>
+      <input type="text" id="seqB" name="fname" value="TACGCAGA"><br>
+    </div>
+
+    <div class="nwselector">
+
+      <label for="match">match:</label>
+      <input type="number" id="match" name="match" value="1" min="0" required="true" step="1" inputmode="numeric" oninput="wipeTable()"><br>
+    </div>
+
+    <div class="nwselector">
+      <label for="mismatch">mismatch:</label>
+      <input type="number" id="mismatch" name="mismatch" value="0" step="1" oninput="wipeTable()" max="0"><br>
+    </div>
+
+    <div class="nwselector">
+      <label for="gap-intro">gap introduction:</label>
+      <input type="number" id="gap-intro" name="gap-intro" value="-4" step=1 oninput="wipeTable()" max="0"><br>
+    </div>
+
+    <div class="nwselector">
+      <label for="gap-ectend">gap score:</label>
+      <input type="number" id="gap-extend" name="gap-extend" value="-1" step=1 oninput="wipeTable()" max="0"><br>
+    </div>
+
+    <div class="nwselector">
+      <button class="checker" onclick="checkTable()">Check Matrices</button>
+    </div>
+
+</div>
+
+<div name="gotohtablediv-d" class="nwtablediv">
+  <table id="tableD"> </table>
+</div>
+
+
+<div name="gotohtablediv-q" class="nwtablediv">
+  <table id="tableQ"> </table>
+</div>
+<div name="gotohtablediv-p" class="nwtablediv">
+  <table id="tableP"> </table>
+</div>
