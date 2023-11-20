@@ -99,49 +99,49 @@ Does the order of checking insertion and deletions change the runtime?
 
 # Exercise 2 - Waterman-Smith-Beyer traceback
 
-Given the Waterman-Smith-Beyer algorithm with the following scoring function:
+<!-- Given the Waterman-Smith-Beyer algorithm with the following scoring function: -->
 
-\begin{align}
-s(x,y)&=
-\begin{cases}
-  -1 & if\ x = y \\
-  +1 & else\\ 
-\end{cases}\\
-g(k) &= 1 + k
-\end{align}
+<!-- \begin{align} -->
+<!-- s(x,y)&= -->
+<!-- \begin{cases} -->
+<!--   -1 & if\ x = y \\ -->
+<!--   +1 & else\\  -->
+<!-- \end{cases}\\ -->
+<!-- g(k) &= 1 + k -->
+<!-- \end{align} -->
 
-When aligning sequences of very different lengths the penalizing of leading and trailing gaps, i.e unaligned sequence ends, dominates the alignment score.
+<!-- When aligning sequences of very different lengths the penalizing of leading and trailing gaps, i.e unaligned sequence ends, dominates the alignment score. -->
 
-We distinguish between leading and trailing gaps (example):
+<!-- We distinguish between leading and trailing gaps (example): -->
 
-```
-A-CC-CC-G
--TCCGCCT-
-``` 
+<!-- ``` -->
+<!-- A-CC-CC-G -->
+<!-- -TCCGCCT- -->
+<!-- ```  -->
 
-In this case the leading gaps are:
+<!-- In this case the leading gaps are: -->
 
-```
-A-
--T
-``` 
+<!-- ``` -->
+<!-- A- -->
+<!-- -T -->
+<!-- ```  -->
 
-The trailing gaps are:
+<!-- The trailing gaps are: -->
 
-```
--G
-T-
-```
+<!-- ``` -->
+<!-- -G -->
+<!-- T- -->
+<!-- ``` -->
 
-The algorithm by Waterman, Smith and Beyer can be adapted to treat end gaps with a score of 0.
-The adapted recursion formula is defined here, where n and m are the lengths of the respective sequences:
+<!-- The algorithm by Waterman, Smith and Beyer can be adapted to treat end gaps with a score of 0. -->
+<!-- The adapted recursion formula is defined here, where n and m are the lengths of the respective sequences: -->
 
-Let $A$ and $B$ be sequences of length $n$ and $m$ respectively 
+<!-- Let $A$ and $B$ be sequences of length $n$ and $m$ respectively  -->
 
-$$
-a_i \in A,\ with\ 1 \leq i \leq n \\
-b_j \in B,\ with\ 1 \leq j \leq m
-$$
+<!-- $$ -->
+<!-- a_i \in A,\ with\ 1 \leq i \leq n \\ -->
+<!-- b_j \in B,\ with\ 1 \leq j \leq m -->
+<!-- $$ -->
 
 :::: {#explaining .warning-box }
 
@@ -156,7 +156,6 @@ knitr::include_graphics("figures/warningicon.svg")
 The previously uploaded recursion schema was wrong. We will either try to fix
 this exercise or remove it completely. Sorry for any inconvenience.
 
-(Also let us know if you can provide a correct recursion schema)
 
 :::
 
@@ -424,12 +423,33 @@ Programming assignments are available via Github Classroom and contain automatic
 
 We recommend doing these assignments since they will help you to further understand this topic.
 
-Access the Github Classroom link: [Programming Assignment: Sheet 04](https://classroom.github.com/a/qvHvwhcf).
+Access the Github Classroom link: [Programming Assignment: Sheet 04](https://classroom.github.com/a/YvN8ydfp).
 
 -------------------------------------------
 
 
 # Preparing for the Exam
+
+
+Below you find an interactive tool that allows you to create dynamic programming matrices to practice for the exam.
+You can fill in the table and check which values are correct via the Check Matrix button. Correctly filled cells will turn green.
+
+Once you filled in the cells, you can trigger the traceback mode toggle. This will disable the input fields. However, you can now select cells that are part of a traceback. While in traceback mode you can click the Check Traceback button. Cells which you marked correctly as being part of a traceback will get a green border. Cells that you marked
+incorrectly will be surrounded by a red border.
+
+:::: {#explaining .warning-box }
+
+::: {#note-exp .warning-header}
+```{r, include=knitr::is_html_output(), echo=FALSE,}
+knitr::include_graphics("figures/warningicon.svg")
+```
+**Warning**
+:::
+::: {#note-exp .note-body}
+
+This tool is in beta and might contain bugs.
+:::
+::::
 
 
 ```{r, echo=FALSE}

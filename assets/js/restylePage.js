@@ -69,6 +69,7 @@ function halloweenTheme(){
   document.documentElement.style.setProperty('--ufr-main-blue', "#171512");
   document.documentElement.style.setProperty('--active-item-color', "rgb(219, 134, 7)");
   document.documentElement.style.setProperty('--selector-color', "rgba(219, 134, 7, 0.3)");
+  document.documentElement.style.setProperty('--selectedCell', "rgb(219, 134, 7, 0.4)");
   document.documentElement.style.setProperty('--font-family', 'Creepster,"Source Sans Pro",Calibri,Candara,Arial,sans-serif');
   document.body.style.backgroundImage = "url('assets/img/GraveYard.svg')";
   document.body.style.backgroundSize = "cover"

@@ -351,8 +351,7 @@ label, input, button {
   align-items: center;
   background-color: var(--active-item-color);
   border: 0px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding: 5px;
   border-radius: 5px;
   box-shadow: 0 .2rem .5rem grey, 0 0 .0625rem grey !important;
   display: flex;

@@ -89,6 +89,7 @@ function createTable(tid, headContent) {
                 newDiv.addEventListener('click', function() {
             // Toggle the 'highlight' class
                   newDiv.classList.toggle('selectedTracebackCell');
+                  newDiv.style.border = null;
                 });
 
             }
@@ -350,7 +351,7 @@ function unpackTracebacks(traceback_paths, seqA, seqB) {
   var matrices = { "D": D, "Q": Q, "P": P };
 
 
-  for (let p = 0; p < Math.min(traceback_paths.length, 10); p++) {
+  for (let p = 0; p < traceback_paths.length; p++) {
       var path = traceback_paths[p];
       for (let x = 0; x < path.length; x++) {
         var m = path[x][0];
