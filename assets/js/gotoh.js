@@ -105,7 +105,6 @@ function checkTable() {
     var mismatch = parseInt(document.getElementById("mismatch").value);
     var gapIntro = parseInt(document.getElementById("gap-intro").value);
     var gapExtend = parseInt(document.getElementById("gap-extend").value);
-    console.log(s1, s2, match, mismatch, gapIntro, gapExtend)
 
     matrices = gotohTable(s1, s2, match, mismatch, gapIntro, gapExtend);
     for (let key in matrices) {
@@ -115,14 +114,10 @@ function checkTable() {
           for (let col = 0; col < s2.length + 1; col++){
               const cellElement = table.rows[row+1].cells[col+1]
               let current = cellElement.childNodes[0].value;
-              console.log(current);
               if (current === "-inf"){
                 current = Number.NEGATIVE_INFINITY;
               } else if (current === "inf") {
                 current = Infinity;
-              }
-              if (key == "Q" && row == 0){
-                  console.log(current);
               }
               let expected = matrix[row][col]
               if (current == "" || current == null) {
@@ -357,7 +352,6 @@ function unpackTracebacks(traceback_paths, seqA, seqB) {
         var m = path[x][0];
         var i = path[x][1][0];
         var j = path[x][1][1];
-        console.log(m, i, j, matrices)
         matrices[m][i][j] = 1;
     }
 
@@ -367,33 +361,88 @@ function unpackTracebacks(traceback_paths, seqA, seqB) {
 }
 
 
-function checkTracebackTable(tid, matrix, s1, s2){
-  const table = document.getElementById(tid);
+function checkTracebackTable(tid, s1, s2){
+  const table = document.getElementById(`table${tid}`);
+  var l = []
     for (let row = 0; row < s1.length + 1; row++) {
         for (let col = 0; col < s2.length + 1; col++) {
             const cellElement = table.rows[row + 1].cells[col + 1]
             const tbdiv = cellElement.childNodes[1]
             if (tbdiv.classList.contains('selectedTracebackCell')){
-              if (matrix[row][col] == 1){
-                tbdiv.style.border = "2px solid green";
-              } else {
-                tbdiv.style.border = "2px solid red";
-
-              }
-
+              l.push([tid, [row, col]])
             }
         }
     }
+  return l
 }
 
 function checkTracebacks(){
   scoring = getScoringAndSeqs()
   traceback_paths = buildTracbackPathes();
-  matrices = unpackTracebacks(traceback_paths, scoring["seqA"], scoring["seqB"])
-  for (let key in matrices) {
-    checkTracebackTable(`table${key}`, matrices[key], scoring["seqA"], scoring["seqB"])
+  d = checkTracebackTable("D", scoring["seqA"], scoring["seqB"])
+  q = checkTracebackTable("Q", scoring["seqA"], scoring["seqB"])
+  p = checkTracebackTable("P", scoring["seqA"], scoring["seqB"])
+  const concatenatedArray = [...d, ...q, ...p];
+  var correct = false;
+  for (let p = 0; p < traceback_paths.length; p++) {
+    if (arraysEqualIgnoreOrder(traceback_paths[p], concatenatedArray)) {
+      correct = true;
+    }
+  }
+  var color;
+  if (correct){
+    color = "green"
+
+  } else {
+    color = "red"
   }
 
+  var path = concatenatedArray;
+  for (let x = 0; x < path.length; x++) {
+    var m = path[x][0];
+    var i = path[x][1][0];
+    var j = path[x][1][1];
+    highlightCell(`table${m}`, i, j, color)
+  }
+
+
+
+}
+
+function stringifyArray(arr) {
+  const [type, coordinates] = arr;
+  const [a, b] = coordinates;
+  return `${type}(${a},${b})`;
+}
+
+function arraysEqualIgnoreOrder(arr1, arr2) {
+  arr1s = []
+  arr2s = []
+
+
+  arr1.forEach((arr) => {
+    const result = stringifyArray(arr);
+    arr1s.push(result);
+  });
+  arr2.forEach((arr) => {
+    const result = stringifyArray(arr);
+    arr2s.push(result);
+  });
+
+  const set1 = new Set(arr1s);
+  const set2 = new Set(arr2s);
+  if (set1.size !== set2.size) {
+    return false;
+  }
+
+  for (const item of set1) {
+    if (!set2.has(item)) {
+
+      return false;
+    }
+  }
+
+  return true;
 }
 
 
@@ -413,13 +462,10 @@ function highlightTraceBacks() {
   }
 }
 
-function highlightCell(tid, i, j, pidx) {
+function highlightCell(tid, i, j, color) {
   const table = document.getElementById(tid);
-    var s1 = document.getElementById("seqA").value;
-    var s2 = document.getElementById("seqB").value;
     const cellElement = table.rows[i+1].cells[j+1];
-    cellElement.childNodes[1].style.border = "2px solid red";
-    cellElement.childNodes[1].childNodes[0].textContent += `${pidx}`
+    cellElement.childNodes[1].style.border = `2px solid ${color}`;
 }
 
 function buildAllTracebackPathsCorrect(seq1, seq2, scoring, dMatrix, pMatrix, qMatrix) {
