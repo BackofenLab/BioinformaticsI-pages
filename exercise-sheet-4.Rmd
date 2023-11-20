@@ -429,6 +429,17 @@ Access the Github Classroom link: [Programming Assignment: Sheet 04](https://cla
 -------------------------------------------
 
 
+# Preparing for the Exam
+
+
+```{r, echo=FALSE}
+htmltools::includeHTML("html/Gotoh.html")
+```
+
+```{r, echo=FALSE}
+htmltools::tags$script(src = "assets/js/gotoh.js", type= "text/javascript")
+```
+
 
 
 

@@ -13,10 +13,10 @@ const tableP = document.getElementById('tableP');
 createTables()
 s1.addEventListener("keyup", createTables);
 s2.addEventListener("keyup", createTables);
-match.addEventListener("keyup", wipeTable);
-mismatch.addEventListener("keyup", wipeTable);
-gapIntro.addEventListener("keyup", wipeTable);
-gapExtend.addEventListener("keyup", wipeTable);
+match.addEventListener("keyup", wipeTables);
+mismatch.addEventListener("keyup", wipeTables);
+gapIntro.addEventListener("keyup", wipeTables);
+gapExtend.addEventListener("keyup", wipeTables);
 
 
 function createHeader(name, sub) {
@@ -71,11 +71,26 @@ function createTable(tid, headContent) {
 
             } else {
                 td = document.createElement('td');
+                const newDiv = document.createElement('div');
+                newDiv.classList.add("full-parent")
+                newDiv.style.zIndex=1;
+                const newSpan = document.createElement('span');
+                newSpan.classList.add("smallText")
+                newDiv.appendChild(newSpan)
+
 
                 var input = document.createElement("input");
                 input.name = "member" + row + "-" + col;
                 input.style.backgroundColor = "transparent"
+                input.style.zIndex=2;
+
                 td.appendChild(input);
+                td.appendChild(newDiv)
+                newDiv.addEventListener('click', function() {
+            // Toggle the 'highlight' class
+                  newDiv.classList.toggle('selectedTracebackCell');
+                });
+
             }
             tr.appendChild(td);
         }
@@ -127,14 +142,46 @@ function checkTable() {
 
 }
 
+
+function fillTable() {
+    var s1 = document.getElementById("seqA").value;
+    var s2 = document.getElementById("seqB").value;
+    var match = parseInt(document.getElementById("match").value);
+    var mismatch = parseInt(document.getElementById("mismatch").value);
+    var gapIntro = parseInt(document.getElementById("gap-intro").value);
+    var gapExtend = parseInt(document.getElementById("gap-extend").value);
+
+    matrices = gotohTable(s1, s2, match, mismatch, gapIntro, gapExtend);
+    for (let key in matrices) {
+      const table = document.getElementById(`table${key}`);
+      matrix = matrices[key];
+      for (let row = 0; row < s1.length + 1; row++){
+          for (let col = 0; col < s2.length + 1; col++){
+              const cellElement = table.rows[row+1].cells[col+1]
+              let expected = matrix[row][col]
+              if (expected == -Infinity) {
+                expected = "-inf"
+              }
+
+              cellElement.childNodes[0].value = expected;
+          }
+      }
+    }
+}
+
+
 function wipeTable(tid) {
+    if (typeof tid === 'undefined') {return ""}
     const table = document.getElementById(tid);
     var s1 = document.getElementById("seqA").value;
     var s2 = document.getElementById("seqB").value;
     for (let row = 0; row < s1.length + 1; row++) {
         for (let col = 0; col < s2.length + 1; col++) {
             const cellElement = table.rows[row + 1].cells[col + 1]
-            cellElement.style.backgroundColor = "white"
+            cellElement.style.backgroundColor = null;
+            cellElement.childNodes[0].value = "";
+            cellElement.childNodes[1].style.backgroundColor = null;
+            cellElement.childNodes[1].style.border = null;
         }
     }
 }
@@ -194,3 +241,262 @@ for (var i = 1; i <= seqA.length; i++) {
   // Return matrices D, Q, and P
   return { D: D, Q: Q, P: P };
 }
+
+
+function swapTableMode(tid, tracebackMode) {
+  const table = document.getElementById(tid);
+  var s1 = document.getElementById("seqA").value;
+  var s2 = document.getElementById("seqB").value;
+  if (tracebackMode) {
+    for (let row = 0; row < s1.length + 1; row++) {
+      for (let col = 0; col < s2.length + 1; col++) {
+          const cellElement = table.rows[row + 1].cells[col + 1]
+          const ip = cellElement.childNodes[0];
+          const div = cellElement.childNodes[1];
+          div.style.zIndex = 2;
+          ip.style.zIndex = 1;
+
+      }
+  }
+
+  } else {
+    for (let row = 0; row < s1.length + 1; row++) {
+      for (let col = 0; col < s2.length + 1; col++) {
+          const cellElement = table.rows[row + 1].cells[col + 1]
+          const ip = cellElement.childNodes[0];
+          const div = cellElement.childNodes[1];
+          div.style.zIndex = 1;
+          ip.style.zIndex = 2;
+
+      }
+
+  }
+
+  }
+
+}
+function swapTableModes(traceBackMode) {
+  swapTableMode("tableD", traceBackMode);
+  swapTableMode("tableQ", traceBackMode);
+  swapTableMode("tableP", traceBackMode);
+}
+
+
+
+const toggleCheckbox = document.getElementById('tracebackToggle');
+const divToHide = document.getElementById('tableCheckBtn');
+const divToShow = document.getElementById('tracebackCheckBtn');
+
+ toggleCheckbox.addEventListener('change', function() {
+      // If the checkbox is checked, show divToShow and hide divToHide
+      if (toggleCheckbox.checked) {
+        divToShow.classList.remove('hidden');
+        divToHide.classList.add('hidden');
+        swapTableModes(true);
+      } else {
+        // If the checkbox is not checked, hide divToShow and show divToHide
+        divToShow.classList.add('hidden');
+        divToHide.classList.remove('hidden');
+        swapTableModes(false);
+
+      }
+    });
+
+
+function getScoringAndSeqs() {
+    var s1 = document.getElementById("seqA").value;
+    var s2 = document.getElementById("seqB").value;
+    var match = parseInt(document.getElementById("match").value);
+    var mismatch = parseInt(document.getElementById("mismatch").value);
+    var gapIntro = parseInt(document.getElementById("gap-intro").value);
+    var gapExtend = parseInt(document.getElementById("gap-extend").value);
+    scoring = {"seqA": s1, "seqB": s2, "match": match, "mismatch": mismatch, "gap_introduction": gapIntro, "gap_extension": gapExtend}
+    return scoring
+
+}
+
+function buildTracbackPathes(){
+  var scoring = getScoringAndSeqs();
+  matrices = gotohTable(
+    scoring["seqA"],
+    scoring["seqB"],
+    scoring["match"],
+    scoring["mismatch"],
+    scoring["gap_introduction"],
+    scoring["gap_extension"],
+  )
+
+  list_pathes = buildAllTracebackPathsCorrect(
+    scoring["seqA"], scoring["seqB"], scoring, matrices["D"], matrices["P"], matrices["Q"]
+  );
+  return list_pathes;
+}
+
+function unpackTracebacks(traceback_paths, seqA, seqB) {
+  var D = [];
+  var Q = [];
+  var P = [];
+
+  for (var i = 0; i <= seqA.length; i++) {
+    D[i] = [];
+    Q[i] = [];
+    P[i] = [];
+    for (var j = 0; j <= seqB.length; j++) {
+      D[i][j] = 0;
+      Q[i][j] = 0;
+      P[i][j] = 0;
+    }
+  }
+  var matrices = { "D": D, "Q": Q, "P": P };
+
+
+  for (let p = 0; p < Math.min(traceback_paths.length, 10); p++) {
+      var path = traceback_paths[p];
+      for (let x = 0; x < path.length; x++) {
+        var m = path[x][0];
+        var i = path[x][1][0];
+        var j = path[x][1][1];
+        console.log(m, i, j, matrices)
+        matrices[m][i][j] = 1;
+    }
+
+
+  }
+  return matrices
+}
+
+
+function checkTracebackTable(tid, matrix, s1, s2){
+  const table = document.getElementById(tid);
+    for (let row = 0; row < s1.length + 1; row++) {
+        for (let col = 0; col < s2.length + 1; col++) {
+            const cellElement = table.rows[row + 1].cells[col + 1]
+            const tbdiv = cellElement.childNodes[1]
+            if (tbdiv.classList.contains('selectedTracebackCell')){
+              if (matrix[row][col] == 1){
+                tbdiv.style.border = "2px solid green";
+              } else {
+                tbdiv.style.border = "2px solid red";
+
+              }
+
+            }
+        }
+    }
+}
+
+function checkTracebacks(){
+  scoring = getScoringAndSeqs()
+  traceback_paths = buildTracbackPathes();
+  matrices = unpackTracebacks(traceback_paths, scoring["seqA"], scoring["seqB"])
+  for (let key in matrices) {
+    checkTracebackTable(`table${key}`, matrices[key], scoring["seqA"], scoring["seqB"])
+  }
+
+}
+
+
+function highlightTraceBacks() {
+  traceback_paths = buildTracbackPathes();
+  for (let p = 0; p < Math.min(traceback_paths.length, 10); p++) {
+      var path = traceback_paths[p];
+      for (let x = 0; x < path.length; x++) {
+        var m = path[x][0];
+        var i = path[x][1][0];
+        var j = path[x][1][1];
+        highlightCell(`table${m}`, i, j, p)
+      }
+
+
+
+  }
+}
+
+function highlightCell(tid, i, j, pidx) {
+  const table = document.getElementById(tid);
+    var s1 = document.getElementById("seqA").value;
+    var s2 = document.getElementById("seqB").value;
+    const cellElement = table.rows[i+1].cells[j+1];
+    cellElement.childNodes[1].style.border = "2px solid red";
+    cellElement.childNodes[1].childNodes[0].textContent += `${pidx}`
+}
+
+function buildAllTracebackPathsCorrect(seq1, seq2, scoring, dMatrix, pMatrix, qMatrix) {
+    const listTracebackPaths = [];
+
+    const cell = ["D", [dMatrix.length - 1, dMatrix[0].length - 1]];
+    const frontier = [ [cell] ];
+
+    while (frontier.length) {
+        const partialPath = frontier.pop();
+        const lastCellPartial = partialPath[partialPath.length - 1];
+        const nextSteps = previousCellsCorrect(seq1, seq2, scoring, dMatrix, pMatrix, qMatrix, lastCellPartial);
+        for (const nextStep of nextSteps) {
+            const newTracebackPath = partialPath.concat([nextStep]);
+            if (nextStep[0] === "D" && nextStep[1][0] === 0 && nextStep[1][1] === 0) {
+                listTracebackPaths.push(newTracebackPath);
+            } else {
+                frontier.push(newTracebackPath);
+            }
+        }
+    }
+
+    return listTracebackPaths;
+}
+
+
+
+function previousCellsCorrect(seq1, seq2, scoring, dMatrix, pMatrix, qMatrix, cell) {
+    const matchScore = scoring["match"];
+    const mismatchScore = scoring["mismatch"];
+    const gapIntro = scoring["gap_introduction"];
+    const gapExtend = scoring["gap_extension"];
+
+    const prevCells = [];
+    const cellMatrix = cell[0];
+    const cellCoordinates = cell[1];
+
+    const [row, column] = cellCoordinates;
+
+    if (cellMatrix === "D") {
+        if (row === 0) {
+            prevCells.push(["D", [row, column - 1]]);
+        } else if (column === 0) {
+            prevCells.push(["D", [row - 1, column]]);
+        } else {
+            const cellValue = dMatrix[row][column];
+            const charFirst = seq1[row - 1];
+            const charSecond = seq2[column - 1];
+            const matchScoreDiag = charFirst === charSecond ? matchScore : mismatchScore;
+
+            if (cellValue === dMatrix[row - 1][column - 1] + matchScoreDiag) {
+                prevCells.push(["D", [row - 1, column - 1]]);
+            }
+            if (cellValue === pMatrix[row][column]) {
+                prevCells.push(["P", [row, column]]);
+            }
+            if (cellValue === qMatrix[row][column]) {
+                prevCells.push(["Q", [row, column]]);
+            }
+        }
+    } else if (cellMatrix === "P") {
+        const cellValue = pMatrix[row][column];
+        if (cellValue === dMatrix[row - 1][column] + gapIntro + gapExtend) {
+            prevCells.push(["D", [row - 1, column]]);
+        }
+        if (cellValue === pMatrix[row - 1][column] + gapExtend) {
+            prevCells.push(["P", [row - 1, column]]);
+        }
+    } else {
+        const cellValue = qMatrix[row][column];
+        if (cellValue === dMatrix[row][column - 1] + gapIntro + gapExtend) {
+            prevCells.push(["D", [row, column - 1]]);
+        }
+        if (cellValue === qMatrix[row][column - 1] + gapExtend) {
+            prevCells.push(["Q", [row, column - 1]]);
+        }
+    }
+
+    return prevCells;
+}
+

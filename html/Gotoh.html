@@ -31,8 +31,28 @@
       <input type="number" id="gap-extend" name="gap-extend" value="-1" step=1 oninput="wipeTable()" max="0"><br>
     </div>
 
-    <div class="nwselector">
+
+    <div class="nwselector" id="tableCheckBtn">
       <button class="checker" onclick="checkTable()">Check Matrices</button>
+    </div>
+
+    <div class="nwselector hidden" id="tracebackCheckBtn">
+      <button class="checker" onclick="checkTracebacks()">Check Traceback</button>
+    </div>
+
+
+    <div class="nwselector">
+      <!-- Rounded switch -->
+      <label for="gap-ectend">Traceback-mode</label>
+
+      <label class="switch" style="width: 60px; margin-left: auto;">
+        <input type="checkbox" id="tracebackToggle" checked=False>
+        <span class="slider round"></span>
+      </label>
+    </div>
+
+    <div class="nwselector">
+      <button class="checker" onclick="fillTable()">Fill Table</button>
     </div>
 
 </div>
