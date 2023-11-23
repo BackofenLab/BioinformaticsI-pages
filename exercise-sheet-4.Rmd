@@ -209,8 +209,18 @@ Fill the dynamic programming matrices $D_{i,j}$, $Q_{i,j}$ and $P_{i,j}$ using t
 ##### Hide
 
 
+##### Hint1: Init Formulae
 
-##### Hint1: Formulae
+\begin{align}
+  D_{0,0} &= 0 \\
+  D_{0, j} &= g(j) &\forall j: 0 < j \leq n \\
+  D_{i, 0} &= g(j) &\forall i: 0 < i \leq n \\
+  Q_{i, 0} &= -\infty &\forall i: 0 < i \leq n \\
+  P_{0, j} &= -\infty &\forall j: 0 < j \leq n 
+\end{align}
+
+
+##### Hint2: Formulae
 
 \begin{align}
 g(k) &= \alpha + k * \beta \\
@@ -236,7 +246,7 @@ P_{i,j} &= max
 \end{align}
 
 
-##### Hint2: Add the missing values
+##### Hint3: Add the missing values
 
 
 ```{r, include=FALSE}
