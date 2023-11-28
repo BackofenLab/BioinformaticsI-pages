@@ -357,6 +357,48 @@ label, input, button {
   display: flex;
 }
 
+.alignment-container {
+  margin: 10px auto;
+  width: 90%;
+  align-items: center;
+  background-color: var(--active-item-color);
+  border: 0px;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0 .2rem .5rem grey, 0 0 .0625rem grey !important;
+}
+
+.alignment {
+  width: 100%;
+  align-items: center;
+  border: 0px;
+  display: flex;
+
+}
+
+.alignment input {
+  display: inline-block;
+
+  width: 100%;
+  border: 1px;
+  border-radius: 0px;
+  text-align: left;
+  background-color: rgb(250, 250, 250);
+
+
+}
+
+.alignment label {
+    color: white;
+    width: 30%;
+
+}
+
+.alignment {
+  margin: 0;
+  border-radius: 0;
+}
+
 .nwselector label {
     color: white;
 
@@ -482,3 +524,12 @@ input:checked + .slider:before {
       font-size: 10px; /* Adjust the font size as needed */
       color: #555; /* Adjust the text color as needed */
     }
+
+.monospace-font {
+  font-family: monospace;
+}
+
+.white-align-bg {
+  background: white;
+  width: 68%;
+}

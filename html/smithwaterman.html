@@ -18,26 +18,20 @@
 
     <div class="nwselector">
       <label for="mismatch">mismatch:</label>
-      <input type="number" id="mismatch" name="mismatch" value="0" step="1" oninput="wipeTable()" max="0"><br>
+      <input type="number" id="mismatch" name="mismatch" value="0" step="1" oninput="wipeTables()" max="0"><br>
     </div>
 
     <div class="nwselector">
-      <label for="gap-intro">gap introduction:</label>
-      <input type="number" id="gap-intro" name="gap-intro" value="-4" step=1 oninput="wipeTable()" max="0"><br>
+      <label for="gap-intro">gap penalty:</label>
+      <input type="number" id="gap-intro" name="gap-intro" value="-1" step=1 oninput="wipeTables()" max="0"><br>
     </div>
-
-    <div class="nwselector">
-      <label for="gap-ectend">gap score:</label>
-      <input type="number" id="gap-extend" name="gap-extend" value="-1" step=1 oninput="wipeTable()" max="0"><br>
-    </div>
-
 
     <div class="nwselector" id="tableCheckBtn">
       <button class="checker" onclick="checkTable()">Check Matrices</button>
     </div>
 
     <div class="nwselector hidden" id="tracebackCheckBtn">
-      <button class="checker" onclick="checkTracebacks()">Check Traceback</button>
+      <button class="checker" onclick="checkTracebacks()">Check Traceback & Alignment</button>
     </div>
 
 
@@ -61,10 +55,33 @@
   <table id="tableD"> </table>
 </div>
 
+<div class="selectordiv">
+  <H4 style="text-align: center;">Alignment</H4>
 
-<div name="gotohtablediv-q" class="nwtablediv">
-  <table id="tableQ"> </table>
+  <div class="alignment-container">
+  <div class="alignment">
+      <label for="alignment-line1">Line 1</label>
+            <div class="white-align-bg" style="border-radius: 4px 4px 0 0;z-index:2">
+
+      <input type="text" id="alignment-line1" value="" class=monospace-font style="border-radius: 4px 4px 0 0;z-index:2"><br>
+            </div>
+
+  </div>
+  <div class="alignment">
+      <label for=""></label>
+            <div class="white-align-bg" style="z-index:1">
+
+      <input type="text" id="alignment-edges" value="" class=monospace-font style="z-index:1" disabled="true"><br>
+            </div>
+
+  </div>
+  <div class="alignment">
+      <label for="alignment-line2">Line 2</label>
+      <div class="white-align-bg" style="border-radius: 0 0 4px 4px;z-index:2;">
+      <input type="text" id="alignment-line2" name="alignment-line2" value="" class=monospace-font style="border-radius: 0 0 4px 4px;z-index:2;"><br>
+      </div>
+
+  </div>
+  </div>
 </div>
-<div name="gotohtablediv-p" class="nwtablediv">
-  <table id="tableP"> </table>
-</div>
+
