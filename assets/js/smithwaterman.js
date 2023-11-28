@@ -484,7 +484,7 @@ function checkTracebacks(){
     var j = path[x][1];
     highlightCell(`tableD`, i, j, color)
   }
-  if (correct) {
+  if (correct & l1.value.length > 0 & l2.value.length > 0) {
       var [as1, as2] = buildAlignmentCorrect(scoring["seqA"], scoring["seqB"], path)
       if (as1 === l1.value & as2 === l2.value) {
         l1.style.backgroundColor = "var(--right-answer)"
