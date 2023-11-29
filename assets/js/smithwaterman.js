@@ -105,7 +105,7 @@ function checkTable() {
     var mismatch = parseInt(document.getElementById("mismatch").value);
     var gapIntro = parseInt(document.getElementById("gap-intro").value);
 
-    matrix = smithWatermanMatrix(s1, s2, match, mismatch, gapIntro, gapExtend);
+    matrix = smithWatermanMatrix(s1, s2, match, mismatch, gapIntro);
     const table = document.getElementById(`tableD`);
     for (let row = 0; row < s1.length + 1; row++){
         for (let col = 0; col < s2.length + 1; col++){
