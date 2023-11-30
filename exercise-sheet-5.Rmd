@@ -135,14 +135,14 @@ $$
 \begin{align}
   D_{i,j} &\stackrel{(i)}{=} max
   \begin{cases}
-    D{i-1, j-1} + s(a_i, b_j)\\
+    D_{i-1, j-1} + s(a_i, b_j)\\
     max_{1 \leq k \leq j} D_{i,j-k} + g(1)\\
     max_{1 \leq k \leq i} D_{i-k,j} + g(1)\\
     0
   \end{cases}
    &D_{i,j} &\stackrel{(ii)}{=} max
   \begin{cases}
-    D{i-1, j-1} + s(a_i, b_j)\\
+    D_{i-1, j-1} + s(a_i, b_j)\\
     max_{1 \leq k \leq j} D_{i,j-k} + g(k)\\
     max_{1 \leq k \leq i} D_{i-k,j} + g(k)\\
     0
@@ -150,14 +150,14 @@ $$
   \\
   D_{i,j} &\stackrel{(iii)}{=} min
   \begin{cases}
-    D{i-1, j-1} + s(a_i, b_j)\\
+    D_{i-1, j-1} + s(a_i, b_j)\\
     max_{1 \leq k \leq j} D_{i,j-k} + g(k)\\
     max_{1 \leq k \leq i} D_{i-k,j} + g(k)\\
     0
   \end{cases}
    &D_{i,j} &\stackrel{(iv)}{=} min
   \begin{cases}
-    D{i-1, j-1} + s(a_i, b_j)\\
+    D_{i-1, j-1} + s(a_i, b_j)\\
     max_{1 \leq k \leq j} D_{i,j-k} + g(1)\\
     max_{1 \leq k \leq i} D_{i-k,j} + g(1)\\
     0
@@ -165,7 +165,7 @@ $$
   \\
    D_{i,j} &\stackrel{(v)}{=} max
   \begin{cases}
-    D{i-1, j-1} + s(a_i, b_j)\\
+    D_{i-1, j-1} + s(a_i, b_j)\\
     max_{1 \leq k \leq j} D_{i,j-k} + g(1)\\
     max_{1 \leq k \leq i} D_{i-k,j} + g(1)\\
     -1
