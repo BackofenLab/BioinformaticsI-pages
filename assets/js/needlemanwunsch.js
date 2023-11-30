@@ -130,3 +130,40 @@ function needlemanWunsch(seqA, seqB, matchScore, mismatchScore, gapPenalty) {
 
     return matrix;
 }
+
+
+document.addEventListener('DOMContentLoaded', function () {
+      const table = document.getElementById('table1');
+
+      table.addEventListener('keydown', function (event) {
+        const currentCell = event.target.parentElement;
+        const currentRow = currentCell.parentElement;
+        const currentRowIndex = currentRow.rowIndex;
+        const currentCellIndex = currentCell.cellIndex;
+
+        let nextCell;
+
+        switch (event.key) {
+          case 'ArrowUp':
+            nextCell = table.rows[currentRowIndex - 1]?.cells[currentCellIndex];
+            break;
+          case 'ArrowDown':
+            nextCell = table.rows[currentRowIndex + 1]?.cells[currentCellIndex];
+            break;
+          case 'ArrowLeft':
+            nextCell = currentCellIndex > 0 ? currentRow.cells[currentCellIndex - 1] : null;
+            break;
+          case 'ArrowRight':
+            nextCell = currentRow.cells[currentCellIndex + 1];
+            break;
+          default:
+            break;
+        }
+
+        if (nextCell && nextCell.querySelector('input')) {
+          nextCell.querySelector('input').focus();
+          event.preventDefault();
+        }
+      });
+    });
+
