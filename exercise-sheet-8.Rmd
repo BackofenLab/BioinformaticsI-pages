@@ -9,13 +9,10 @@ title: "Exercise sheet 8: Substitution Scoring"
 We want to calculate the $PAM_1$ matrix based on the following two sequence alignments of the DNA sequences a, b, c and d.
 
 
-::::{#img1-p .extra-m}
-::: {#img3 .tutorial-img}
-```{r, echo=FALSE, out.width="100%", fig.align='center', include=knitr::is_html_output()}
-knitr::include_graphics("figures/sheet-8/sheet8-exercise1-sequences.svg")
 ```
-:::
-::::
+a = AAGTACTTT   c = AGGTAACACGTTTAGTCA
+b = AAATTCCTA   d = AGTTTACCGGGTTAATCA
+```
 
 Tip: In order to solve a) and b) create a combined alignment comprised of two combined sequences a' and b' (based on the two initial alignments and their symmetric counterparts)
 
@@ -39,14 +36,9 @@ Calculate the nucleotide frequencies  $r_x$
 
 ##### Hint : Formulae
 
-::::{#img1-p .extra-m}
-::: {#img3 .tutorial-img}
-```{r, echo=FALSE, out.width="50%", fig.align='center', include=knitr::is_html_output()}
-knitr::include_graphics("figures/sheet-8/sheet8-exercise1-r.svg")
-```
-:::
-::::
-
+\[
+r_x = \frac{\#\{x \in (a')\}}{\lvert a' \rvert}
+\]
 
 ##### Solution
 \begin{align}
@@ -70,14 +62,9 @@ Calculate the symmetric mutation matrix $E(x,y)$.
 
 ##### Hint : Formulae
 
-::::{#img1-p .extra-m}
-::: {#img3 .tutorial-img}
-```{r, echo=FALSE, out.width="50%", fig.align='center', include=knitr::is_html_output()}
-knitr::include_graphics("figures/sheet-8/sheet8-exercise1-E.svg")
-```
-:::
-::::
-  
+\[
+e_{xy} = \frac{1}{\lvert a' \rvert} \left( \# \left\{ \frac{x}{y} \in (a') \right\} \in (b') \right)
+\]  
   
 
 ##### Intermediate Values
@@ -119,13 +106,10 @@ Calculate the non-normalized PAM matrix S with $10*log_{10} (odds)$, using the p
 ##### Hide
 
 ##### Hint : Formulae
-::::{#img1-p .extra-m}
-::: {#img3 .tutorial-img}
-```{r, echo=FALSE, out.width="50%", fig.align='center', include=knitr::is_html_output()}
-knitr::include_graphics("figures/sheet-8/sheet8-exercise1-S.svg")
-```
-:::
-::::
+
+\begin{align}
+S_{xy} = 10 \log_{10} \left( \frac{e_{xy}}{r_x r_y} \right)
+\end{align}
   
 
 
@@ -151,23 +135,23 @@ index_replace(sij_ft)
  
  1. The general similarity scoring function.
  
-::::{#img1-p .extra-m}
-::: {#img3 .tutorial-img}
-```{r, echo=FALSE, out.width="100%", fig.align='center', include=knitr::is_html_output()}
-knitr::include_graphics("figures/sheet-8/sheet8-exercise1-D-general.svg")
-```
-:::
-::::
+\[
+s^{g}(x, y) =
+\begin{cases}
+5 & \text{if } x = y \\
+-2 & \text{if } x \neq y \text{ or gapped}
+\end{cases}
+\]
 
 2. The PAM1-based similarity scoring function.
 
-::::{#img1-p .extra-m}
-::: {#img3 .tutorial-img}
-```{r, echo=FALSE, out.width="100%", fig.align='center', include=knitr::is_html_output()}
-knitr::include_graphics("figures/sheet-8/sheet8-exercise1-D-PAM1.svg")
-```
-:::
-::::
+\[
+s^{PAM}(x, y) =
+\begin{cases}
+-2 & \text{if } x \text{ or } y \text{ gapped} \\
+s_{x,y} & \text{otherwise (match/mismatch)}
+\end{cases}
+\]
  
 #### {.tabset}
 
@@ -201,17 +185,14 @@ Calculate the normalization factor $\gamma$ based on $E$ .
 
 ##### Hint: Formulae
 
-::::{#img1-p .extra-m}
-::: {#img3 .tutorial-img}
-```{r, echo=FALSE, out.width="40%", fig.align='center', include=knitr::is_html_output()}
-knitr::include_graphics("figures/sheet-8/sheet8-exercise1-gamma.svg")
-```
-:::
-::::
+\[
+0.01 = \gamma \sum_{x \neq y} e_{xy} = \gamma \left(1 - \sum_{x} e_{xx}\right)
+\]
 
 ##### Solution
-
-$\gamma = 0.027$
+\[
+\gamma = 0.027
+\]
 
 #### {-}
 
@@ -226,13 +207,10 @@ Calculate the mutation rate matrix $P$.
 
 ##### Hint: Formulae
 
-::::{#img1-p .extra-m}
-::: {#img3 .tutorial-img}
-```{r, echo=FALSE, out.width="50%", fig.align='center', include=knitr::is_html_output()}
-knitr::include_graphics("figures/sheet-8/sheet8-exercise1-P.svg")
-```
-:::
-::::
+\[
+p_{xy} = \frac{e_{xy}}{r_x}
+\]
+
 
 ##### Solution
 
@@ -259,13 +237,10 @@ Calculate the normalized mutation rate matrix $P'$ using $P$ and the normalizati
 
 ##### Hint: Formulae
 
-::::{#img1-p .extra-m}
-::: {#img3 .tutorial-img}
-```{r, echo=FALSE, out.width="50%", fig.align='center', include=knitr::is_html_output()}
-knitr::include_graphics("figures/sheet-8/sheet8-exercise1-pprime.svg")
-```
-:::
-::::
+\begin{align*}
+p'_{xy} &= \gamma p_{xy} \\
+p'_{xx} &= 1 - \sum_{x \neq y} p'_{xy}
+\end{align*}
 
 ##### Solution
 
@@ -292,13 +267,9 @@ Determine $PAM_1$ based on the normalized mutation rate matrix $P'$ with $10*log
 
 ##### Hint: Formulae
 
-::::{#img1-p .extra-m}
-::: {#img3 .tutorial-img}
-```{r, echo=FALSE, out.width="50%", fig.align='center', include=knitr::is_html_output()}
-knitr::include_graphics("figures/sheet-8/sheet8-exercise1-PAM1.svg")
-```
-:::
-::::
+\[
+PAM1_{xy} = 10 \log_{10} \left(\frac{p'_{xy}}{r_y}\right)
+\]
 
 ##### Solution
 
@@ -326,13 +297,9 @@ Determine $PAM_2$. (round to integer)
 
 ##### Hint: Formulae
 
-::::{#img1-p .extra-m}
-::: {#img3 .tutorial-img}
-```{r, echo=FALSE, out.width="50%", fig.align='center', include=knitr::is_html_output()}
-knitr::include_graphics("figures/sheet-8/sheet8-exercise1-PAMX.svg")
-```
-:::
-::::
+\[
+PAM(m)_{xy} = 10 \log_{10} \left(\frac{p'_{xy}}{r_y}\right) \text{ with } p'_{xy} \in (P')^m
+\]
 
 ##### Solution
 
@@ -355,7 +322,7 @@ Programming assignments are available via Github Classroom and contain automatic
 
 We recommend doing these assignments since they will help you to further understand this topic.
 
-Access the Github Classroom link: [Programming Assignment: Sheet 08](https://classroom.github.com/a/7DiYavfD).
+Access the Github Classroom link: [Programming Assignment: Sheet 08](https://classroom.github.com/a/NohnBhm8).
 
 
 
