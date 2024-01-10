@@ -62,10 +62,10 @@ Calculate the symmetric mutation matrix $E(x,y)$.
 
 ##### Hint : Formulae
 
-\[
-e_{xy} = \frac{1}{\lvert a' \rvert} \left( \# \left\{ \frac{x}{y} \in (a') \right\} \in (b') \right)
-\]  
-  
+\begin{align}
+e_{xy} = \frac{1}{\lvert a' \rvert} \left( \# \begin{vmatrix}x \\ y \end{vmatrix} \in \begin{pmatrix} a' \\ b' \end{pmatrix} \right)
+\end{align} 
+
 
 ##### Intermediate Values
 
