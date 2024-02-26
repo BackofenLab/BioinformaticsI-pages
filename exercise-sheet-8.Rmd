@@ -158,19 +158,51 @@ s_{x,y} & \text{otherwise (match/mismatch)}
 
 ##### Hide
 
-##### Hint: Possible Answers
+##### Hint: Matrices
 
-::::{#img1-p .extra-m}
-::: {#img3 .tutorial-img}
-```{r, echo=FALSE, out.width="100%", fig.align='center', include=knitr::is_html_output()}
-knitr::include_graphics("figures/sheet-8/sheet8-exercise1-D-result.svg")
+:::: {.flex-container}
+
+::: {#half .half}
+
+```{r, results="asis", include=knitr::is_html_output(), echo=FALSE}
+tij <- read.csv("tables/sheet8_1d.csv", check.names=FALSE, sep=";")
+tij_ft <- flextable(tij)
+tij_ft <- custom_theme(tij_ft)
+index_replace(tij_ft)
 ```
+
+:::
+
+
+::: {#half .half}
+
+
+```{r, results="asis", include=knitr::is_html_output(), echo=FALSE}
+tij <- read.csv("tables/sheet8_1d2.csv", check.names=FALSE, sep=";")
+tij_ft <- flextable(tij)
+tij_ft <- custom_theme(tij_ft)
+index_replace(tij_ft)
+```
+
 :::
 ::::
 
 ##### Solution
 
-B
+general scoring: 
+
+```
+ACC
+ATT
+``` 
+
+PAM scoring:
+
+```
+ACC--
+A--TT
+``` 
+
 
 #### {-}
 
@@ -295,10 +327,36 @@ Determine $PAM_2$. (round to integer)
 
 ##### Hide
 
+
+
 ##### Hint: Formulae
 
 \[
 PAM(m)_{xy} = 10 \log_{10} \left(\frac{p'_{xy}}{r_y}\right) \text{ with } p'_{xy} \in (P')^m
+\]
+
+##### Hint: P2
+
+\[
+(P')^2 = \begin{bmatrix}
+0.9910 & 0.0015 & 0.0045 & 0.003 \\
+0.0030 & 0.9910 & 0.0030 & 0.003 \\
+0.0045 & 0.0015 & 0.9910 & 0.003 \\
+0.0060 & 0.0030 & 0.0060 & 0.985 \\
+\end{bmatrix} \times 
+\begin{bmatrix}
+0.9910 & 0.0015 & 0.0045 & 0.003 \\
+0.0030 & 0.9910 & 0.0030 & 0.003 \\
+0.0045 & 0.0015 & 0.9910 & 0.003 \\
+0.0060 & 0.0030 & 0.0060 & 0.985 \\
+\end{bmatrix} 
+= 
+\begin{bmatrix}
+0.98212375 & 0.00298875 & 0.0089415 & 0.005946 \\
+0.0059775 & 0.982099 & 0.0059775 & 0.005946 \\
+0.0089415 & 0.00298875 & 0.98212375 & 0.005946 \\
+0.011892 & 0.005946 & 0.011892 & 0.97027 \\
+\end{bmatrix}
 \]
 
 ##### Solution
