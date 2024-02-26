@@ -133,7 +133,7 @@ The Needleman-Wunsch algorithm enables the calculation of the optimal pairwise s
 
 
 \begin{align}
-  S1 &= TACCGCGC\\
+  S1 &= TACGCGC\\
   S2 &= TCCGA
 \end{align}
 
