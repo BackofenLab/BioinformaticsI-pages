@@ -7,3 +7,4 @@ dependencies:
   - pandoc
   - r-flextable
   - r-officer
+  - r-stringi
