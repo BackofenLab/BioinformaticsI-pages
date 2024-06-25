@@ -1,7 +1,7 @@
 name: build-github-pages
 env:
   GITHUB_ACTOR: BackofenLab
-  GITHUB_REPOSITORY: BackofenLab/V_RNA-pages
+  GITHUB_REPOSITORY: BackofenLab/BioinformaticsI-pages
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 on:
@@ -33,7 +33,7 @@ jobs:
         shell: bash
 
       - name: create environment with mamba
-        uses: conda-incubator/setup-miniconda@v2
+        uses: conda-incubator/setup-miniconda@v3
         with:
           channels: conda-forge,defaults
           auto-activate-base: false
@@ -47,11 +47,11 @@ jobs:
           Rscript -e "rmarkdown::render_site()"
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
           path: 'docs/'
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
