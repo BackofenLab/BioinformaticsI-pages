@@ -97,72 +97,8 @@ Does the order of checking insertion and deletions change the runtime?
 
 #### {-}
 
-# Exercise 2 - Waterman-Smith-Beyer traceback
 
-<!-- Given the Waterman-Smith-Beyer algorithm with the following scoring function: -->
-
-<!-- \begin{align} -->
-<!-- s(x,y)&= -->
-<!-- \begin{cases} -->
-<!--   -1 & if\ x = y \\ -->
-<!--   +1 & else\\  -->
-<!-- \end{cases}\\ -->
-<!-- g(k) &= 1 + k -->
-<!-- \end{align} -->
-
-<!-- When aligning sequences of very different lengths the penalizing of leading and trailing gaps, i.e unaligned sequence ends, dominates the alignment score. -->
-
-<!-- We distinguish between leading and trailing gaps (example): -->
-
-<!-- ``` -->
-<!-- A-CC-CC-G -->
-<!-- -TCCGCCT- -->
-<!-- ```  -->
-
-<!-- In this case the leading gaps are: -->
-
-<!-- ``` -->
-<!-- A- -->
-<!-- -T -->
-<!-- ```  -->
-
-<!-- The trailing gaps are: -->
-
-<!-- ``` -->
-<!-- -G -->
-<!-- T- -->
-<!-- ``` -->
-
-<!-- The algorithm by Waterman, Smith and Beyer can be adapted to treat end gaps with a score of 0. -->
-<!-- The adapted recursion formula is defined here, where n and m are the lengths of the respective sequences: -->
-
-<!-- Let $A$ and $B$ be sequences of length $n$ and $m$ respectively  -->
-
-<!-- $$ -->
-<!-- a_i \in A,\ with\ 1 \leq i \leq n \\ -->
-<!-- b_j \in B,\ with\ 1 \leq j \leq m -->
-<!-- $$ -->
-
-:::: {#explaining .warning-box }
-
-::: {#note-exp .warning-header}
-```{r, include=knitr::is_html_output(), echo=FALSE,}
-knitr::include_graphics("figures/warningicon.svg")
-```
-**Warning**
-:::
-::: {#note-exp .note-body}
-
-The previously uploaded recursion schema was wrong. We will either try to fix
-this exercise or remove it completely. Sorry for any inconvenience.
-
-
-:::
-
-
-::::
-
-# Exercise 3 - Gotoh Algorithm
+# Exercise 2 - Gotoh Algorithm
 
 Consider the following sequences $S1$ , $S2$ and the similarity scoring via $s(x, y)$ and $g(k)$.
 
@@ -179,7 +115,7 @@ Consider the following sequences $S1$ , $S2$ and the similarity scoring via $s(x
 
 
 
-### 3a)
+### 2a)
 
 Which optimization scheme (minimization/maximization) needs to be applied to generate
 a useful sequence alignment.
@@ -197,7 +133,7 @@ Maximization since we are scoring a similarity and not a distance.
 
 #### {-}
 
-### 3b)
+### 2b)
 
 Fill the dynamic programming matrices $D_{i,j}$, $Q_{i,j}$ and $P_{i,j}$ using the Gotoh algorithm! 
 
@@ -380,7 +316,7 @@ index_replace(pij_ft)
 #### {-}
 
 
-### 3c)
+### 2c)
 
 Calculate all optimal alignments and the corresponding score!
 
@@ -405,7 +341,7 @@ TACGCAGA    TACGCAGA    TACGCAGA
 
 #### {-}
 
-### 3d)
+### 2d)
 
 Calculate the alignments using the Waterman-Smith-Beyer algorithm instead.
 
@@ -427,7 +363,7 @@ Calculation is just less efficient.
 
 ---------------------------------
 
-# Exercise 4 - Programming assignment
+# Exercise 3 - Programming assignment
 
 Programming assignments are available via Github Classroom and contain automatic tests.
 
