@@ -69,7 +69,7 @@ e_{xy} = \frac{1}{\lvert a' \rvert} \left( \# \begin{vmatrix}x \\ y \end{vmatrix
 
 ##### Intermediate Values
 
-Non normalized values. Further multiplied by $|a'|$
+Non normalized values. Further divided by $|a'|$
 
 ```{r, include=FALSE}
 sij <- read.csv("tables/sheet-8/b_1.csv", check.names=FALSE, sep=",")
