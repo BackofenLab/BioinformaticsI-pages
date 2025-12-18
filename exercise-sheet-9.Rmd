@@ -151,7 +151,7 @@ $ss_3$= 1
 \
 
 
-a4
+$a_4$
 
 ```
 C--AC-
@@ -161,7 +161,7 @@ GT`r knitr::asis_output("\U25C6")`AC`r knitr::asis_output("\U25C6")`
 $ss_4$ = 1
 
 
-a5
+$a_5$
 
 ```
 --CAC-
