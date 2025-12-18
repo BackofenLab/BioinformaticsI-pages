@@ -161,6 +161,16 @@ GT`r knitr::asis_output("\U25C6")`AC`r knitr::asis_output("\U25C6")`
 $ss_4$ = 1
 
 
+a5
+
+```
+--CAC-
+GT`r knitr::asis_output("\U25C6")`AC`r knitr::asis_output("\U25C6")`
+```
+                  
+$ss_4$ = 0
+
+
 
 #### {-}
 
