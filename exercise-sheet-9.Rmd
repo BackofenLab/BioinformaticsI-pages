@@ -168,7 +168,7 @@ a5
 GT`r knitr::asis_output("\U25C6")`AC`r knitr::asis_output("\U25C6")`
 ```
                   
-$ss_4$ = 0
+$ss_5$ = 0
 
 
 
